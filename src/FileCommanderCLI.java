@@ -10,11 +10,24 @@ public class FileCommanderCLI {
         this.fileCommander=new FileCommander();
 
         try{
-            String test = this.reader.readLine();
-            this.writer.write(test);
+            String command = this.reader.readLine();
+            runCommand(command);
             this.writer.flush();
         }catch(IOException e){
             e.printStackTrace();
         }
     }
+    public void runCommand(String command) {
+        String[] arguments = command.split(" ");
+        try {
+            switch (command) {
+                case "pwd" -> writer.write(fileCommander.pwd());
+                case "cd" -> fileCommander.cd(arguments[1]);
+                default -> writer.write("Nieznane polecenie");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
