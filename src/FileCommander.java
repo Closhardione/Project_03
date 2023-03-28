@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class FileCommander {
     public Path path;
-    public FileCommander(Path path){
+    public FileCommander(){
         this.path=Path.of(System.getProperty("user.home"));
     }
     public String pwd(){
